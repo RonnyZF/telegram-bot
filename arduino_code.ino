@@ -1,29 +1,31 @@
 
-int led = 13;
-char sel;
-int led_luz = 1;
-int led_vent = 2;
-int led_20 = 3;
-int led_40 = 4;
-int led_60 = 5;
-int led_80 = 6;
-int led_100 = 7;
-
-//Variables Sensor Temperatura y humedad
 
 //Libraries
 #include <DHT.h>;
-#include <NewPing.h>
+
+
+int led = 13;
+char sel;
+int led_luz = 22;
+int led_vent = 23;
+int led_20 = 24;
+int led_40 = 25;
+int led_60 = 26;
+int led_80 = 27;
+int led_100 = 28;
+
+//Variables Sensor Temperatura y humedad
 //Constants
-#define DHTPIN 7     // what pin we're connected to
+#define DHTPIN 2     // what pin we're connected to
 #define DHTTYPE DHT22   // DHT 22  (AM2302)
-DHT dht(DHTPIN, DHTTYPE); //// Initialize DHT sensor for normal 16mhz Arduino
-/*Aqui se configuran los pines donde debemos conectar el sensor*/
-#define TRIGGER_PIN  12
-#define ECHO_PIN     11
-#define MAX_DISTANCE 200
-/*Crear el objeto de la clase NewPing*/
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+
+
+int maxHum = 60;
+int maxTemp = 40;
+
+DHT dht(DHTPIN, DHTTYPE);
+
+
 //Variables
 int chk;
 int hum;  //Stores humidity value
@@ -56,10 +58,13 @@ void setup() {
   //Variables Sensor Luminosidad
   pinMode(ledPin, OUTPUT);
   pinMode(led, OUTPUT);
+
   //Sensor de proximidad
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+
   //Sensor de Humedad y temperatura
+
   dht.begin();
 
   pinMode(led, OUTPUT);
@@ -192,7 +197,7 @@ void ctrl_cortinas(char c) {
 
 void envio_datos(char c) {
   if (c == 'S') {
-    //Serial.println("1999"); Supongo que esto era una prueba
+    Serial.println("1999"); 
     int temperatura = lectura_temp();
     int distancia = lectura_dist();
     int humedad = lectura_hum();
@@ -207,7 +212,8 @@ void envio_datos(char c) {
 /////////////////////////////////////////////////////////////////////////////////
 
 
-void loop() {
+  void loop() {
+    //sel ='S';
   envio_datos(sel);
   Serial.println(sel);
   if (Serial.available()) {
@@ -216,4 +222,29 @@ void loop() {
     ctrl_ventiladores(sel);
     ctrl_cortinas(sel);
   }
+  }
+
+
+/*
+void loop() {
+
+  delay(1000);
+  int temperatura = lectura_temp();
+  int distancia = lectura_dist();
+  int humedad = lectura_hum();
+  int light = lectura_luz();
+   Serial.println("temperatura:");
+  Serial.println(temperatura);
+  
+  Serial.println("Humedad:");
+  Serial.println(humedad);
+
+  Serial.println("Distancia:");
+  Serial.println(distancia);
+
+  Serial.println("Luz:");
+  Serial.println(light);
+  delay(2000);
+
 }
+*/
