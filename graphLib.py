@@ -16,9 +16,8 @@ def graficar_temp():
     with open('data.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
-            print (row)
             temp=float(row[0])
-            time=float(row[5])
+            time=float(row[4])
             temperatura.append(temp)
             tiempo.append(time)
  
@@ -29,36 +28,18 @@ def graficar_temp():
     plt.title('Temperatura')
     plt.grid(True)
     plt.savefig("temper.png")
-    plt.show()
-
-
-def graficar_hum():
-    with open('data.csv') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        for row in csv_reader:
-            time=float(row[5])
-            humed=float(row[0])
-            tiempo.append(time)
-            humedad.append(humed)
-    fig2=plt.figure(2)
-    plt.plot(tiempo,humedad, 'm') ####****
-    plt.xlabel('Tiempo (s)')
-    plt.ylabel('Humedad ')
-    plt.title('Humedad vs Tiempo')
-    plt.grid(True)
-    plt.savefig("humedad.png")
-    plt.show()
-
-
+    #plt.show()
 
 def graficar_nivel():
     with open('data.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
-            time=float(row[5])
-            dist=floar(row[0])
-            tiempo.append(time)
+            time=float(row[4])
+            dist=float(row[1])
+            #tiempo.append(time)
             distancia.append(dist)
+    print(len(tiempo))
+    print(len(distancia))
     fig3=plt.figure(3)
     plt.plot(tiempo,distancia, 'm')
     plt.xlabel('Tiempo (s)')
@@ -66,38 +47,50 @@ def graficar_nivel():
     plt.title('Nivel de alimento')
     plt.grid(True)
     plt.savefig("nivel.png")
-    plt.show()
+    #plt.show()
 
 
+
+def graficar_hum():
+    with open('data.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            time=float(row[4])
+            humed=float(row[2])
+            #tiempo.append(time)
+            humedad.append(humed)
+    fig2=plt.figure(2)
+    plt.plot(tiempo,humedad,'m')
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('Humedad ')
+    plt.title('Humedad vs Tiempo')
+    plt.grid(True)
+    plt.savefig("humedad.png")
+    #plt.show()
 
 def graficar_luminosidad():
 
     with open('data.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
-            time=float(row[5])
-            lum=float(row[0])
-            tiempo.append(time)
+            time=float(row[4])
+            lum=float(row[3])
+            #tiempo.append(time)
             luminosidad.append(lum)
     fig4=plt.figure(4)
     plt.plot(tiempo,luminosidad, 'm')
     plt.xlabel('Tiempo (s)')
-    plt.ylabel('Luminosidad ')
     plt.title('Luminosidad')
     plt.grid(True)
     plt.savefig("luz.png")
-    plt.show()
+    #plt.show()
 
 
 
+graficar_temp()
+graficar_nivel()
+graficar_hum()
 graficar_luminosidad()
 
-#graficar_hum()
 
 
-
-#graficar_nivel()
-
-
-
-#graficar_temp()
