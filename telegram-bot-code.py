@@ -256,7 +256,7 @@ def back_to_main_keyboard():
 
 ############################# Messages #########################################
 def main_menu_message(now):
-  temp,lvl_f,hum,luz,estadoL,estadoV,estadoC = arduinoCtrl.display_sensor_data()
+  temp,lvl_f,hum,luz,estadoL,estadoV,estadoC,tiempo_A = arduinoCtrl.display_sensor_data()
   return ('*Bienvenido al centro de control y monitoreo.*\n'
           'A continuacion se presenta el estado actual:\n\n'
           'Fecha: '+now.strftime("%Y-%m-%d")+' Hora: '+now.strftime("%H:%M:%S"  )+'\n'
