@@ -27,7 +27,7 @@ def graficar_temp():
     plt.ylabel('Temperatura (C)')
     plt.title('Temperatura')
     plt.grid(True)
-    plt.savefig("temper.png")
+    plt.savefig("graphT.png")
     #plt.show()
 
 def graficar_nivel():
@@ -46,7 +46,7 @@ def graficar_nivel():
     plt.ylabel('Nivel ')
     plt.title('Nivel de alimento')
     plt.grid(True)
-    plt.savefig("nivel.png")
+    plt.savefig("graphA.png")
     #plt.show()
 
 
@@ -65,7 +65,7 @@ def graficar_hum():
     plt.ylabel('Humedad ')
     plt.title('Humedad vs Tiempo')
     plt.grid(True)
-    plt.savefig("humedad.png")
+    plt.savefig("graphH.png")
     #plt.show()
 
 def graficar_luminosidad():
@@ -87,10 +87,10 @@ def graficar_luminosidad():
 
 
 
-graficar_temp()
-graficar_nivel()
-graficar_hum()
-graficar_luminosidad()
+#graficar_temp()
+#graficar_nivel()
+#graficar_hum()
+#graficar_luminosidad()
 
 
 

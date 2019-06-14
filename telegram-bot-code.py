@@ -5,6 +5,8 @@ import serial
 import logging
 import datetime
 import arduinoCtrl
+import graphLib
+
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, RegexHandler,
                           ConversationHandler)
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, ReplyKeyboardMarkup
@@ -74,6 +76,7 @@ def four_menu(bot, update):
 def submenu_1_1(bot, update):
   query = update.callback_query
   now = datetime.datetime.now()
+  graphLib.graficar_temp()
   bot.send_photo(chat_id=query.message.chat_id, photo=open('graphT.png', 'rb'), caption='Fecha: '+now.strftime("%Y-%m-%d")+' Hora: '+now.strftime("%H:%M:%S"  )+'\n')
   bot.edit_message_text(chat_id=query.message.chat_id,
                         message_id=query.message.message_id,
@@ -90,6 +93,7 @@ def submenu_1_1(bot, update):
 def submenu_1_2(bot, update):
   query = update.callback_query
   now = datetime.datetime.now()
+  graphLib.graficar_hum()
   bot.send_photo(chat_id=query.message.chat_id, photo=open('graphH.png', 'rb'), caption='Fecha: '+now.strftime("%Y-%m-%d")+' Hora: '+now.strftime("%H:%M:%S"  )+'\n')
 
   bot.edit_message_text(chat_id=query.message.chat_id,
@@ -106,6 +110,7 @@ def submenu_1_2(bot, update):
 def submenu_1_3(bot, update):
   query = update.callback_query
   now = datetime.datetime.now()
+  graphLib.graficar_nivel()
   bot.send_photo(chat_id=query.message.chat_id, photo=open('graphA.png', 'rb'), caption='Fecha: '+now.strftime("%Y-%m-%d")+' Hora: '+now.strftime("%H:%M:%S"  )+'\n')
 
   bot.edit_message_text(chat_id=query.message.chat_id,
