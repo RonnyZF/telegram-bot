@@ -74,6 +74,7 @@ void setup() {
 
 int lectura_hum() {
   hum = dht.readHumidity();
+  
   return hum;
 }
 int lectura_temp() {
@@ -82,6 +83,7 @@ int lectura_temp() {
 }
 int lectura_luz() {
   sensorValue = analogRead(sensorPin);
+  sensorValue = 0.1*(1000-sensorValue);
   return sensorValue;
 }
 int lectura_dist() {
@@ -96,6 +98,8 @@ int lectura_dist() {
   duration = pulseIn(echoPin, HIGH);
   // Calculating the distance
   distance = duration * 0.034 / 2;
+  
+  distance=1.667*(60-distance);
   return distance;
 }
 
