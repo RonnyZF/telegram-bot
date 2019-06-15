@@ -5,7 +5,7 @@ import serial
 import csv
 import variables
 
-arduino = serial.Serial('/dev/ttyACM0', 9600)
+arduino = serial.Serial('/dev/ttyACM1', 9600)
 
 def controlar_luces():
 	arduino.write(str.encode("L"))
