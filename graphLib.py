@@ -140,10 +140,10 @@ def graficar_luminosidad():
 
 
 
-graficar_temp()
-graficar_nivel()
-graficar_hum()
-graficar_luminosidad()
+#graficar_temp()
+#graficar_nivel()
+#graficar_hum()
+#graficar_luminosidad()
 
 
 
