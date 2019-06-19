@@ -2,6 +2,7 @@
 import datetime
 import csv
 import itertools
+import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sp
 import scipy.signal as signal
@@ -20,8 +21,20 @@ def graficar_temp():
             tiempo.append(time)
  
     fig1=plt.figure(1)
+    ax = fig1.add_subplot(1, 1, 1)
+    axes = plt.gca()
+    axes.set_xlim([0,24])
+    axes.set_ylim([0,30])
+    # Major ticks every 20, minor ticks every 5
+    major_ticks = np.arange(0, 23.1, 1)
+    minor_ticks = np.arange(0, 23.1, 0.5)
+
+    ax.set_xticks(major_ticks)
+    ax.set_xticks(minor_ticks, minor=True)
+#    ax.set_yticks(major_ticks)
+#    ax.set_yticks(minor_ticks, minor=True)
     plt.plot(tiempo,temperatura, 'm')
-    plt.xlabel('Tiempo (s)')
+    plt.xlabel('Tiempo (horas)')
     plt.ylabel('Temperatura (C)')
     plt.title('Temperatura')
     plt.grid(True)
@@ -42,9 +55,21 @@ def graficar_nivel():
     print(len(tiempo))
     print(len(distancia_f))
     fig3=plt.figure(3)
+    ax = fig3.add_subplot(1, 1, 1)
+    axes = plt.gca()
+    axes.set_xlim([0,24])
+    axes.set_ylim([0,100])
+    # Major ticks every 20, minor ticks every 5
+    major_ticks = np.arange(0, 23.1, 1)
+    minor_ticks = np.arange(0, 23.1, 0.5)
+
+    ax.set_xticks(major_ticks)
+    ax.set_xticks(minor_ticks, minor=True)
+#    ax.set_yticks(major_ticks)
+#    ax.set_yticks(minor_ticks, minor=True)
     plt.plot(tiempo,distancia_f, 'm')
-    plt.xlabel('Tiempo (s)')
-    plt.ylabel('Nivel ')
+    plt.xlabel('Tiempo (horas)')
+    plt.ylabel('Porcentaje nivel de alimento')
     plt.title('Nivel de alimento')
     plt.grid(True)
     plt.savefig("graphA.png")
@@ -63,8 +88,20 @@ def graficar_hum():
             tiempo.append(time)
             humedad.append(humed)
     fig2=plt.figure(2)
+    ax = fig2.add_subplot(1, 1, 1)
+    axes = plt.gca()
+    axes.set_xlim([0,24])
+    axes.set_ylim([0,100])
+    # Major ticks every 20, minor ticks every 5
+    major_ticks = np.arange(0, 23.1, 1)
+    minor_ticks = np.arange(0, 23.1, 0.5)
+
+    ax.set_xticks(major_ticks)
+    ax.set_xticks(minor_ticks, minor=True)
+#    ax.set_yticks(major_ticks)
+#    ax.set_yticks(minor_ticks, minor=True)
     plt.plot(tiempo,humedad,'m')
-    plt.xlabel('Tiempo (s)')
+    plt.xlabel('Tiempo (horas)')
     plt.ylabel('Humedad ')
     plt.title('Humedad vs Tiempo')
     plt.grid(True)
@@ -91,10 +128,10 @@ def graficar_luminosidad():
 
 
 
-#graficar_temp()
-#graficar_nivel()
-#graficar_hum()
-#graficar_luminosidad()
+graficar_temp()
+graficar_nivel()
+graficar_hum()
+graficar_luminosidad()
 
 
 
